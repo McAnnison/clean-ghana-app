@@ -1,8 +1,8 @@
 import type { Express, Request } from "express";
 import { createServer, type Server } from "http";
 import express from "express";
-import { storage } from "./storage";
-import { insertReportSchema, insertPickupRequestSchema, insertCampaignSchema } from "@shared/schema";
+import { storage } from "./storage.ts";
+import { insertReportSchema, insertPickupRequestSchema, insertCampaignSchema } from "../shared/schema.ts";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
@@ -66,10 +66,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Create user if doesn't exist
         user = await storage.upsertUser({
           id: userId,
-          email: req.user.claims.email || null,
-          firstName: req.user.claims.first_name || null,
-          lastName: req.user.claims.last_name || null,
-          profileImageUrl: req.user.claims.profile_image_url || null,
+          email: req.user?.claims.email || null,
+          firstName: req.user?.claims.first_name || null,
+          lastName: req.user?.claims.last_name || null,
+          profileImageUrl: req.user?.claims.profile_image_url || null,
           role: 'citizen',
         });
       }

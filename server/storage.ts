@@ -16,8 +16,8 @@ import {
   type Campaign,
   type InsertCampaign,
   type AgencyMember,
-} from "@shared/schema";
-import { db } from "./db";
+} from "../shared/schema.ts";
+import { db } from "./db.ts";
 import { eq, desc, and, count, sql, avg } from "drizzle-orm";
 
 export interface IStorage {
