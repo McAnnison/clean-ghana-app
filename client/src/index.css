@@ -1,8 +1,15 @@
 /* Removed Tailwind directives because build tool does not support them */
 
 :root {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(210 25% 7.8431%);
+  --background: hsl@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+} --foreground: hsl(210 25% 7.8431%);
   --card: hsl(180 6.6667% 97.0588%);
   --card-foreground: hsl(210 25% 7.8431%);
   --popover: hsl(0 0% 100%);
@@ -103,19 +110,3 @@
   --shadow-xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00), 0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0.00);
   --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0.00);
 }
-
-@layer base {
-  * {
-    border-color: var(--border);
-    border-style: solid;
-    border-width: 0;
-  }
-
-  body {
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: var(--background);
-    color: var(--foreground);
-  }
- }
