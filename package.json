@@ -5,8 +5,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cross-env NODE_ENV=development tsx server/index.ts",
+    "build": "cross-env NODE_ENV=production npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "tsc",
     "start": "node server/index.ts",
+    "start:server": "cross-env NODE_ENV=production tsx server/index.ts",
     "check": "tsc",
     "db:push": "drizzle-kit push"
   },
